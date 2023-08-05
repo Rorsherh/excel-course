@@ -11,20 +11,20 @@ const isDev = !isProd;
 const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`;
 
 
-const jsloaders = () => {
-  const loaders = [
-    {
-      loader: "babel-loader",
-        options: {
-        presets: ['@babel/preset-env']
-        }
-    }
-  ];
+// const jsloaders = () => {
+//   const loaders = [
+//     {
+//       loader: "babel-loader",
+//         options: {
+//         presets: ['@babel/preset-env']
+//         }
+//     }
+//   ];
 
-  if (isDev) {
-    loaders.push('eslint-loader')
-  }
-}
+//   if (isDev) {
+//     loaders.push('eslint-loader')
+//   }
+// }
 
 
 
@@ -85,13 +85,13 @@ module.exports = {
             {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
-                // use: {
-                //   loader: "babel-loader",
-                //   options: {
-                //     presets: ['@babel/preset-env']
-                //   }
-                // }
-                use: jsloaders()
+                use: {
+                  loader: "babel-loader",
+                  options: {
+                    presets: ['@babel/preset-env']
+                  }
+                }
+                // use: jsloaders()
               }
           ]
     }
